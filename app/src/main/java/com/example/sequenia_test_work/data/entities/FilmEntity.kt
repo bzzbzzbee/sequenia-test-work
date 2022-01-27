@@ -11,8 +11,7 @@ import com.example.sequenia_test_work.data.FilmsDb
 )
 data class FilmEntity(
     val year: Int,
-    val imageUrl: String,
-    val genres: List<String>,
+    val imageUrl: String?,
     val name: String,
     val rating: Double,
     val description: String?,

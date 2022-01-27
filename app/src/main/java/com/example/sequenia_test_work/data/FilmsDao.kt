@@ -11,10 +11,13 @@ interface FilmsDao {
     fun getFilms(): Flow<List<FilmEntity>>
 
     @Query("SELECT * FROM films WHERE filmId IN(:id)")
-    fun getFilmById(id:Int): Flow<FilmEntity>
+    fun getFilmById(id: Int): Flow<FilmEntity>
 
     @Query("SELECT * FROM genres ORDER BY name ASC")
     fun getGenres(): Flow<List<GenreEntity>>
+
+    @Query("SELECT * FROM genres WHERE name IN(:name)")
+    fun getGenreByName(name: String): GenreEntity
 
     @Transaction
     @Query("SELECT * FROM genres WHERE name IN(:genre)")
@@ -28,8 +31,8 @@ interface FilmsDao {
     suspend fun insert(film: FilmEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(genreEntity: GenreEntity)
+    suspend fun insert(genreEntity: GenreEntity): Long
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun insert(crossRef: FilmGenreCrossRef)
+    suspend fun insert(crossRef: FilmGenreCrossRef): Long
 }

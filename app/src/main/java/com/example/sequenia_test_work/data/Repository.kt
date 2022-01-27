@@ -10,4 +10,5 @@ interface Repository {
     suspend fun getFilmById(id: Int): Flow<FilmEntity>
     suspend fun getFilmsByGenre(genre: String): Flow<List<FilmEntity>>
     suspend fun getGenresByFilm(id: Int): Flow<List<GenreEntity>>
+    suspend fun downloadFilmData()
 }

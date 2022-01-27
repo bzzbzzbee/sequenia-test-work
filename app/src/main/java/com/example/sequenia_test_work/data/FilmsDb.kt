@@ -3,10 +3,11 @@ package com.example.sequenia_test_work.data
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.sequenia_test_work.data.entities.FilmEntity
+import com.example.sequenia_test_work.data.entities.FilmGenreCrossRef
 import com.example.sequenia_test_work.data.entities.GenreEntity
 
 @Database(
-    entities = [FilmEntity::class, GenreEntity::class],
+    entities = [FilmEntity::class, GenreEntity::class, FilmGenreCrossRef::class],
     version = 1,
     exportSchema = false
 )
