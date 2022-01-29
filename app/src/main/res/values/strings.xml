@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">sequenia-test-work</string>
+    <string name="film_title">Title: %1$s</string>
+    <string name="film_year">Year: %1$d</string>
+    <string name="film_rating">Rating: %1$s</string>
+    <string name="there_is_no_film_desc">There is no description</string>
+    <string name="film_preview">Film preview</string>
+    <string name="unknown_error">Unknown error</string>
 </resources>
