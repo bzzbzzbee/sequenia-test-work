@@ -4,6 +4,16 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+import java.math.BigDecimal
+import java.math.RoundingMode
+import java.text.DecimalFormat
 
 object CommonFunctions {
     fun showToast(context: Context, text: String, duration: Int = Toast.LENGTH_SHORT) =
@@ -36,4 +46,15 @@ object CommonFunctions {
         }
         return false
     }
+
+    fun <T> Fragment.collectLatestLifecycleFlow(flow: Flow<T>, collect: suspend (T) -> Unit) {
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                flow.collectLatest(collect)
+            }
+        }
+    }
+
+    fun Double.round(scale: Int = 1, mode: RoundingMode = RoundingMode.CEILING): Double =
+        BigDecimal(this).setScale(scale, mode).toDouble()
 }
