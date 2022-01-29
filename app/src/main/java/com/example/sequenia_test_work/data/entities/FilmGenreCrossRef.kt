@@ -8,8 +8,8 @@ import com.example.sequenia_test_work.data.FilmsDb
     primaryKeys = ["genreId", "filmId"]
 )
 data class FilmGenreCrossRef(
-    val filmId: Int,
-    val genreId: Int
+    val filmId: Long,
+    val genreId: Long
 )
 
 data class FilmWithGenres(

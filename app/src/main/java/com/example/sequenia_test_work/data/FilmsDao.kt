@@ -11,7 +11,7 @@ interface FilmsDao {
     fun getFilms(): Flow<List<FilmEntity>>
 
     @Query("SELECT * FROM films WHERE filmId IN(:id)")
-    fun getFilmById(id: Int): Flow<FilmEntity>
+    fun getFilmById(id: Long): Flow<FilmEntity>
 
     @Query("SELECT * FROM genres ORDER BY name ASC")
     fun getGenres(): Flow<List<GenreEntity>>
@@ -25,7 +25,7 @@ interface FilmsDao {
 
     @Transaction
     @Query("SELECT * FROM films WHERE filmId IN(:id)")
-    fun getFilmWithGenres(id: Int): Flow<List<FilmWithGenres>>
+    fun getFilmWithGenres(id: Long): Flow<List<FilmWithGenres>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(film: FilmEntity): Long

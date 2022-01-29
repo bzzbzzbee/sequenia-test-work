@@ -4,11 +4,16 @@ import com.example.sequenia_test_work.api.FilmsApi
 import com.example.sequenia_test_work.data.entities.FilmEntity
 import com.example.sequenia_test_work.data.entities.FilmGenreCrossRef
 import com.example.sequenia_test_work.data.entities.GenreEntity
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class RepositoryImpl @Inject constructor(private val api: FilmsApi, private val dao: FilmsDao) :
     Repository {
+    private val repoScope = CoroutineScope(Dispatchers.IO)
+
     override suspend fun getFilms(): Flow<List<FilmEntity>> {
         TODO("Not yet implemented")
     }
@@ -17,7 +22,7 @@ class RepositoryImpl @Inject constructor(private val api: FilmsApi, private val 
         TODO("Not yet implemented")
     }
 
-    override suspend fun getFilmById(id: Int): Flow<FilmEntity> {
+    override suspend fun getFilmById(id: Long): Flow<FilmEntity> {
         TODO("Not yet implemented")
     }
 
@@ -51,11 +56,14 @@ class RepositoryImpl @Inject constructor(private val api: FilmsApi, private val 
                         val genre = GenreEntity(genreItem)
                         var genreId = dao.insert(genre)
 
-                        if(genreId == -1L) {
-                           genreId = dao.getGenreByName(genreItem).genreId.toLong()
+                        if (genreId == -1L) {
+                            genreId =
+                                withContext(repoScope.coroutineContext) {
+                                    dao.getGenreByName(genreItem).genreId
+                                }
                         }
 
-                        val crossRef = FilmGenreCrossRef(filmItem.id, genreId.toInt())
+                        val crossRef = FilmGenreCrossRef(filmItem.id, genreId)
                         dao.insert(crossRef)
                     }
                 }

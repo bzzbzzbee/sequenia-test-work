@@ -7,9 +7,9 @@ import com.example.sequenia_test_work.data.FilmsDb
 
 @Entity(
     tableName = FilmsDb.GENRE_TABLE_NAME,
-    indices = [Index(value = ["genreId", "name"], unique = true)]
+    indices = [Index(value = ["name"], unique = true)]
 )
 data class GenreEntity(val name: String) {
     @PrimaryKey(autoGenerate = true)
-    var genreId: Int = 0
+    var genreId: Long = 0
 }

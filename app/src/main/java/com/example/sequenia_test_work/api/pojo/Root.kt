@@ -29,7 +29,7 @@ data class FilmsItem(
     val description: String?,
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: Long,
 
     @field:SerializedName("localized_name")
     val localizedName: String

@@ -15,6 +15,6 @@ data class FilmEntity(
     val name: String,
     val rating: Double,
     val description: String?,
-    @PrimaryKey val filmId: Int,
+    @PrimaryKey val filmId: Long,
     val localizedName: String
 )
