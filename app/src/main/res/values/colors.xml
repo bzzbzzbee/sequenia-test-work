@@ -8,5 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="header_color">#d9000000</color>
-    <color name="body_color">#99000000</color>
+    <color name="app_bg">#F0F4FD</color>
+    <color name="text_color">#1A2652</color>
+    <color name="selected">#C1E3F3</color>
 </resources>

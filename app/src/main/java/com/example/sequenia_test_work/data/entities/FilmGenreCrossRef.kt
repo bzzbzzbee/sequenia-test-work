@@ -5,7 +5,22 @@ import com.example.sequenia_test_work.data.FilmsDb
 
 @Entity(
     tableName = FilmsDb.FILM_GENRE_CROSSREF_TABLE_NAME,
-    primaryKeys = ["genreId", "filmId"]
+    primaryKeys = ["genreId", "filmId"],
+    foreignKeys = [
+        ForeignKey(
+            entity = FilmEntity::class,
+            parentColumns = ["filmId"],
+            childColumns = ["filmId"],
+            onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE
+        ),
+        ForeignKey(
+            entity = GenreEntity::class,
+            parentColumns = ["genreId"],
+            childColumns = ["genreId"],
+            onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE
+        )
+    ],
+    indices = [Index("filmId"), Index("genreId")]
 )
 data class FilmGenreCrossRef(
     val filmId: Long,

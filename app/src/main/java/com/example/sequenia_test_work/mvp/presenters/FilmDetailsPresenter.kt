@@ -29,7 +29,6 @@ class FilmDetailsPresenter @Inject constructor(private val repository: Repositor
     }
 }
 
-
 sealed class FilmState {
     data class Success(val film: FilmEntity) : FilmState()
     object Loading : FilmState()
