@@ -78,6 +78,7 @@ class FragmentFilmsList : MvpAppCompatFragment(), FilmListView {
         collectLatestLifecycleFlow(presenter.films) { filmsState ->
             when (filmsState) {
                 is FilmListState.Success -> {
+                    binding.progressCircleList.hide()
                     adapter.dataFilm =
                         filmsState.films
                             .sortedBy { it.localizedName }
@@ -85,16 +86,15 @@ class FragmentFilmsList : MvpAppCompatFragment(), FilmListView {
                             .map { pair -> ListItem.FilmItem(pair) }
                 }
 
-                is FilmListState.Loading -> CommonFunctions.showToast(
-                    requireContext(),
-                    getString(R.string.loading)
-                )
+                is FilmListState.Loading -> binding.progressCircleList.show()
 
-                is FilmListState.Error -> CommonFunctions.showToast(
-                    requireContext(),
-                    filmsState.exception.localizedMessage
-                )
-
+                is FilmListState.Error -> {
+                    binding.progressCircleList.hide()
+                    CommonFunctions.showToast(
+                        requireContext(),
+                        filmsState.exception.localizedMessage
+                    )
+                }
             }
         }
     }
@@ -103,6 +103,7 @@ class FragmentFilmsList : MvpAppCompatFragment(), FilmListView {
         collectLatestLifecycleFlow(presenter.genres) { genreState ->
             when (genreState) {
                 is GenresListState.Success -> {
+                    binding.progressCircleList.hide()
                     adapter.dataGenre = genreState.genres.map { genre ->
                         ListItem.GenreItem(
                             genre,
@@ -111,16 +112,15 @@ class FragmentFilmsList : MvpAppCompatFragment(), FilmListView {
                     }
                 }
 
-                is GenresListState.Loading -> CommonFunctions.showToast(
-                    requireContext(),
-                    getString(R.string.loading)
-                )
+                is GenresListState.Loading -> binding.progressCircleList.show()
 
-                is GenresListState.Error -> CommonFunctions.showToast(
-                    requireContext(),
-                    genreState.exception.localizedMessage
-                )
-
+                is GenresListState.Error -> {
+                    binding.progressCircleList.hide()
+                    CommonFunctions.showToast(
+                        requireContext(),
+                        genreState.exception.localizedMessage
+                    )
+                }
             }
         }
     }

@@ -19,5 +19,5 @@ abstract class FilmsDb : RoomDatabase() {
         const val FILM_GENRE_CROSSREF_TABLE_NAME = "film_genre_crossref"
     }
 
-    abstract fun filmsDao() : FilmsDao
+    abstract fun filmsDao(): FilmsDao
 }

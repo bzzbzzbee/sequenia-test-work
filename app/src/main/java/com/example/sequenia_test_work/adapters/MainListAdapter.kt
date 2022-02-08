@@ -1,11 +1,9 @@
 package com.example.sequenia_test_work.adapters
 
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sequenia_test_work.data.entities.FilmEntity
 import com.example.sequenia_test_work.data.entities.GenreEntity
-import com.example.sequenia_test_work.mvp.presenters.FilmListPresenter
 
 sealed class ListItem {
     class FilmItem(val filmPair: Pair<FilmEntity, FilmEntity?>) : ListItem()

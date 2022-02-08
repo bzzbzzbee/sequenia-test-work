@@ -9,5 +9,4 @@
     <string name="unknown_error">Unknown error</string>
     <string name="genres_title">Genres</string>
     <string name="films_title">Films</string>
-    <string name="loading">Loading…</string>
 </resources>

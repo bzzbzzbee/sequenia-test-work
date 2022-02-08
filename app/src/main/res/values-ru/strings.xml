@@ -9,5 +9,4 @@
     <string name="unknown_error">Неизвестная ошибка</string>
     <string name="genres_title">Жанры</string>
     <string name="films_title">Фильмы</string>
-    <string name="loading">Загрузка…</string>
 </resources>

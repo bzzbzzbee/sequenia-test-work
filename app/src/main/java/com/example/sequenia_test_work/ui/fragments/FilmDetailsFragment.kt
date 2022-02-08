@@ -61,18 +61,19 @@ class FilmDetailsFragment : MvpAppCompatFragment(), FilmDetailsView {
         collectLatestLifecycleFlow(presenter.film) { film ->
             when (film) {
                 is FilmState.Success -> {
+                    binding.progressCircleDetails.hide()
                     setFilmDetails(film.film)
                 }
 
-                is FilmState.Loading -> CommonFunctions.showToast(
-                    requireContext(),
-                    getString(R.string.loading)
-                )
+                is FilmState.Loading -> binding.progressCircleDetails.show()
 
-                is FilmState.Error -> CommonFunctions.showToast(
-                    requireContext(),
-                    film.exception.localizedMessage
-                )
+                is FilmState.Error -> {
+                    binding.progressCircleDetails.hide()
+                    CommonFunctions.showToast(
+                        requireContext(),
+                        film.exception.localizedMessage
+                    )
+                }
             }
         }
     }
