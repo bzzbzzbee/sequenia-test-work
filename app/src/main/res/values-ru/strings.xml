@@ -1,7 +1,13 @@
 <resources>
     <string name="app_name">sequenia-test-work</string>
     <string name="film_title">Название: %1$s</string>
+    <string name="film_name">Оригинальное название: %1$s</string>
     <string name="film_year">Год: %1$d</string>
     <string name="film_rating">Рейтинг: %1$s</string>
     <string name="there_is_no_film_desc">Описание отсутсвует</string>
+    <string name="film_preview">Превью фильма</string>
+    <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="genres_title">Жанры</string>
+    <string name="films_title">Фильмы</string>
+    <string name="loading">Загрузка…</string>
 </resources>

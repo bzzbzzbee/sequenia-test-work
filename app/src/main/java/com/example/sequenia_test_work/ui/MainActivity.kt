@@ -1,6 +1,7 @@
 package com.example.sequenia_test_work.ui
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.sequenia_test_work.databinding.ActivityMainBinding
 import com.example.sequenia_test_work.mvp.contracts.MainView
 import com.example.sequenia_test_work.mvp.presenters.MainPresenter
@@ -20,6 +21,7 @@ class MainActivity : MainView, MvpAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)

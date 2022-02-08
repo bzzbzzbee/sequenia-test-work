@@ -61,17 +61,18 @@ class FilmDetailsFragment : MvpAppCompatFragment(), FilmDetailsView {
         collectLatestLifecycleFlow(presenter.film) { film ->
             when (film) {
                 is FilmState.Success -> {
-                    binding.progressIndicator.hide()
                     setFilmDetails(film.film)
                 }
 
-                is FilmState.Loading -> binding.progressIndicator.show()
+                is FilmState.Loading -> CommonFunctions.showToast(
+                    requireContext(),
+                    getString(R.string.loading)
+                )
 
-                is FilmState.Error -> {
-                    binding.progressIndicator.hide()
-                    film.exception.printStackTrace()
-                    CommonFunctions.showToast(requireContext(), film.exception.localizedMessage)
-                }
+                is FilmState.Error -> CommonFunctions.showToast(
+                    requireContext(),
+                    film.exception.localizedMessage
+                )
             }
         }
     }
@@ -80,6 +81,7 @@ class FilmDetailsFragment : MvpAppCompatFragment(), FilmDetailsView {
         if (!film.imageUrl.isNullOrEmpty()) {
             Picasso.get().load(film.imageUrl).into(binding.imgFilm)
         }
+        binding.textName.text = getString(R.string.film_name, film.name)
         binding.textTitle.text = getString(R.string.film_title, film.localizedName)
         binding.textYear.text = getString(R.string.film_year, film.year)
         binding.textRating.text = getString(R.string.film_rating, film.rating.round(1).toString())

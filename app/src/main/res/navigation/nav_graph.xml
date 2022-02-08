@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/filmDetailsFragment">
+    app:startDestination="@id/fragmentFilmsList">
     <fragment
         android:id="@+id/filmDetailsFragment"
         android:name="com.example.sequenia_test_work.ui.fragments.FilmDetailsFragment"
@@ -11,5 +11,13 @@
             android:name="id"
             app:argType="long"
             android:defaultValue="-1L" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFilmsList"
+        android:name="com.example.sequenia_test_work.ui.fragments.FragmentFilmsList"
+        android:label="FragmentFilmsList" >
+        <action
+            android:id="@+id/action_fragmentFilmsList_to_filmDetailsFragment"
+            app:destination="@id/filmDetailsFragment" />
     </fragment>
 </navigation>

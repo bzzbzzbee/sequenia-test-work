@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/layout_first_film"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/layout_second_film"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_first_film"
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_no_preview"
+            android:contentDescription="@string/film_preview" />
+
+        <TextView
+            android:id="@+id/text_first_title"
+            style="@style/SequeniaTestWorkText.Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            tools:text="film name" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_second_film"
+        android:layout_width="200dp"
+        android:layout_height="250dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/layout_first_film"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/img_second_film"
+            android:layout_width="150dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            app:srcCompat="@drawable/ic_no_preview"
+            android:contentDescription="@string/film_preview" />
+
+        <TextView
+            android:id="@+id/text_second_title"
+            style="@style/SequeniaTestWorkText.Header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            tools:text="film name" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

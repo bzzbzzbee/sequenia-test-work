@@ -3,59 +3,66 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/app_bg">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/progressIndicator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:progress="70"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/img_film"
-            android:layout_width="200dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:contentDescription="@string/film_preview"
-            android:src="@drawable/ic_no_preview"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_film_info"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_title"
-            style="@style/SequeniaTestWorkText.Header"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:maxLines="2"
-            app:layout_constraintStart_toEndOf="@id/img_film"
-            app:layout_constraintTop_toTopOf="@id/img_film"
-            tools:text="title: film name" />
+            <ImageView
+                android:id="@+id/img_film"
+                android:layout_width="200dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/film_preview"
+                app:srcCompat="@drawable/ic_no_preview"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_year"
-            style="@style/SequeniaTestWorkText.Header"
-            android:layout_width="170dp"
-            app:layout_constraintStart_toEndOf="@id/img_film"
-            app:layout_constraintTop_toBottomOf="@id/text_title"
-            tools:text="year: 2000" />
+            <TextView
+                android:id="@+id/text_name"
+                style="@style/SequeniaTestWorkText.Header"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/img_film"
+                app:layout_constraintTop_toTopOf="@id/img_film"
+                tools:text="name: film name" />
 
-        <TextView
-            android:id="@+id/text_rating"
-            style="@style/SequeniaTestWorkText.Header"
-            android:layout_width="170dp"
-            app:layout_constraintStart_toEndOf="@id/img_film"
-            app:layout_constraintTop_toBottomOf="@id/text_year"
-            tools:text="rating: 9.0" />
+            <TextView
+                android:id="@+id/text_title"
+                style="@style/SequeniaTestWorkText.Header"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                app:layout_constraintStart_toEndOf="@id/img_film"
+                app:layout_constraintTop_toBottomOf="@id/text_name"
+                tools:text="title: film name" />
+
+            <TextView
+                android:id="@+id/text_year"
+                style="@style/SequeniaTestWorkText.Header"
+                android:layout_width="170dp"
+                app:layout_constraintStart_toEndOf="@id/img_film"
+                app:layout_constraintTop_toBottomOf="@id/text_title"
+                tools:text="year: 2000" />
+
+            <TextView
+                android:id="@+id/text_rating"
+                style="@style/SequeniaTestWorkText.Header"
+                android:layout_width="170dp"
+                app:layout_constraintStart_toEndOf="@id/img_film"
+                app:layout_constraintTop_toBottomOf="@id/text_year"
+                tools:text="rating: 9.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/text_desc"
@@ -64,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/img_film"
+            app:layout_constraintTop_toBottomOf="@id/layout_film_info"
             tools:text="Warhammer (с англ. — «Молот войны») — сеттинг, созданный в 1983 году сотрудниками компании Games Workshop Ричардом Халливелом (англ. Richard Halliwell), Брайаном Анселом (англ. Bryan Ansell) и Риком Пристли (англ. Rick Priestley) для одноимённой военно-тактической игры.
 
 Вселенная Warhammer примечательна своим суровым реализмом. В её основе лежит мир с культурой, аналогичной эпохе германского Ренессанса.
